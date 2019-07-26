@@ -1,9 +1,50 @@
 {% extends 'base.html' %}
-{% load static %}
-{% load bootstrap4 %}
 
-{% block title %} {% endblock title %}
+{% block title %} {{ pool.title }} {% endblock title %}
 
 {% block content %}
 
+<div class="page-booking">
+    <img src={{ pool.image }} alt="photo de piscine">
+  <div class="container d-flex mt-5">
+    <div class="row">
+      <div class="col-8">
+        <div class="card-product-booking">
+          <div class="card-product-booking-infos">
+            <div class="card-product-booking-pricing">
+              <h2 class="card-product-booking-price">{{ pool.price }}€</h2>
+              <span>par personne</span>
+              <span>(la journée)</span>
+            </div>
+            <div class="card-product-booking-title">
+              <h2> {{ pool.title }} </h2>
+              <span>proposé par {{ pool.user }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="booking-swimming-pool-info">
+          <h3>Description</h3>
+          <p>{{ pool.description }}</p>
+        </div>
+        <div class="booking-swimming-pool-info">
+          <h3>Taille de la piscine</h3>
+          <p>Longueur: {{ pool.length }} m / Largeur: {{ pool.width }} m</p>
+        </div>
+        <div class="booking-swimming-pool-info">
+          <h3>Piscine chauffée</h3>
+          {% if pool.heated == True %}
+            oui
+          {% else %}
+            non
+          {% endif %}
+        </div>
+        <div class="booking-swimming-pool-info">
+          <h3>Capacité d'accueil</h3>
+          <p>{{ pool.capacity }} personnes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}
+

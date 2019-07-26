@@ -1,0 +1,154 @@
+/************** COMPONENTS **************/
+
+/* card(pool) */
+.card-product {
+  overflow: hidden;
+  background: white;
+  border-radius: 2px;
+}
+
+.card-product:hover {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  border-radius: 2px;
+}
+
+.card-product > img {
+  height: 240px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.card-product-infos .card-product-pricing {
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.card-product-pricing h2 {
+  font-size: 24px;
+  color: #07B2FF;
+}
+
+.card-product-infos span {
+  font-size: 12px;
+}
+
+.card-product-title {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.booking-swimming-pool-info {
+  padding: 16px;
+}
+
+
+/************** PAGES **************/
+
+/* pool_list */
+.searchpage-container {
+  display: flex;
+  background-color: white;
+}
+
+.cards-product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  width: 60%;
+  padding: 24px;
+}
+
+.searchpage-container a {
+  color: black;
+  text-decoration: none;
+  color: #2B2A2A;
+}
+
+/* pool_detail */
+
+.page-booking  {
+  background-color: white;
+}
+
+.page-booking img {
+  height: 45vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-product-booking-price {
+  font-size: 40px;
+  color: #07B2FF;
+  font-weight: bold;
+}
+
+.card-product-booking-title h2 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.card-product-booking {
+  margin-bottom: 32px;
+}
+
+.card-product-booking .card-product-booking-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-product-booking-infos .card-product-booking-pricing {
+  margin-right: 32px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.card-product-booking-infos span {
+  font-size: 14px;
+}
+
+.card-product-booking-title {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.booking-swimming-pool-info {
+  padding: 16px;
+}
+
+.booking-swimming-pool-info h3 {
+  color: #949494;
+}
+
+.form-booking {
+  padding: 40px 24px;
+  border-left: solid 1px #d4cfd1;
+  position: sticky;
+  top: 25vh;
+}
+
+.form-booking-title {
+  padding: 0 0 16px 0;
+  display: flex;
+  justify-content: center;
+}
