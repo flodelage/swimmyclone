@@ -1,1 +1,26 @@
+{% extends 'base.html' %}
 
+{% block title %} <h1>Nos piscines</h1> {% endblock title %}
+
+{% block content %}
+
+<div class="searchpage-container">
+  <div class="cards-product">
+    {% for pool in pools %}
+        <div class="card-product">
+          <img src={{ pool.image }} alt="photo de piscine">
+          <div class="card-product-infos">
+            <div class="card-product-pricing">
+              <h2 class="card-product-price">{{ pool.price }}€</h2>
+              <span>par personne</span>
+              <span>(la journée)</span>
+            </div>
+            <div class="card-product-title">
+              <h2>{{ pool.title|capfirst }}</h2>
+              <span>proposée par {{ pool.user.first_name|capfirst }} {{ pool.user.last_name|capfirst }}</span>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+  </div>
+{% endblock content %}
