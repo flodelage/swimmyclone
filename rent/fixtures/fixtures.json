@@ -1,0 +1,25 @@
+[
+  {
+    "model": "rent.Profile",
+    "pk": 1,
+    "fields": {
+      "user": user,
+    }
+  },
+  {
+    "model": "rent.Pool",
+    "pk": 1,
+    "fields": {
+      "profile": Profile.objects.get(pk=1),
+      "title": "super baraque",
+      "description": "vous ne le regretterez pas",
+      "address": "11 rue des lilas Tresses",
+      "capacity": 8,
+      "price": 20,
+      "length": 8,
+      "width": 4,
+      "type": "Outdoor"
+    }
+  },
+]
+
