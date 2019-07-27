@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %} {{ pool.title }} {% endblock title %}
+{% block title %} ComeSwim - {{ pool.title }} {% endblock title %}
 
 {% block content %}
 
 <div class="page-booking">
-    <img src={{ pool.image }} alt="photo de piscine">
+    <img src={{ pool.image.url }} alt="photo de piscine">
   <div class="container d-flex mt-5">
     <div class="row">
       <div class="col-8">
@@ -18,7 +18,7 @@
             </div>
             <div class="card-product-booking-title">
               <h2> {{ pool.title }} </h2>
-              <span>proposé par {{ pool.user }}</span>
+              <span>proposée par {{ pool.user.first_name|capfirst }} {{ pool.user.last_name|capfirst }}</span>
             </div>
           </div>
         </div>

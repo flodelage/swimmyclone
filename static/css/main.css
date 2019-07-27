@@ -1,5 +1,33 @@
 /************** COMPONENTS **************/
 
+/* banner(home) */
+.banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://images.pexels.com/photos/1418519/pexels-photo-1418519.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  padding: 80px;
+}
+
+/* navbar */
+.navbar-lewagon {
+  justify-content: space-between;
+  background: white;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand i {
+  font-size: 32px;
+  color: #07B2FF;
+}
+
 /* card(pool) */
 .card-product {
   overflow: hidden;
@@ -57,7 +85,6 @@
 .booking-swimming-pool-info {
   padding: 16px;
 }
-
 
 /************** PAGES **************/
 

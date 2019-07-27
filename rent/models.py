@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    image = models.ImageField(upload_to='profile_image', blank=True)
+    image = models.ImageField(upload_to='profile_images', blank=True)
 
     def __str__(self):
         return "Profil de {}({} {})".format(self.user.username, self.user.first_name, self.user.last_name)
@@ -19,7 +19,7 @@ class Pool(models.Model):
     address = models.CharField(max_length=300)
     capacity = models.PositiveIntegerField()
     availability = models.BooleanField(default=True)
-    image = models.ImageField(upload_to='profile_image', blank=True)
+    image = models.ImageField(upload_to='pool_images', blank=True)
     price = models.PositiveIntegerField()
     length = models.FloatField()
     width = models.FloatField()
@@ -46,4 +46,6 @@ class Booking(models.Model):
     date = models.DateField()
 
     def __str__(self):
-        return "Location de la piscine:le {}, statut: {}".format(self.date, self.state)
+        return "Location de la piscine: {}, le {}, par: {} {}, statut: {}".format(self.pool.title, self.date,
+                                                                                  self.user.first_name,
+                                                                                  self.user.last_name, self.state)

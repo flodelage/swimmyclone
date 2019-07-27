@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %} ComeSwim - Nos piscines {% endblock title %}
+{% block title %} ComeSwim - Accueil {% endblock title %}
 
 {% block content %}
+<div class="banner">
+
+</div>
+
+<a href="{% url 'pool-list' %}" class="button btn-primary">Voir nos Piscines</a>
 
 <div class="searchpage-container">
   <div class="cards-product">
-    {% for pool in pools %}
+    {% for pool in sliced_pools %}
       <a href="{% url 'pool-detail' pool.pk %}">
         <div class="card-product">
           <img src={{ pool.image.url }} alt="photo de piscine">
