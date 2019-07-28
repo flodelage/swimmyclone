@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %} ComeSwim - Ajout de piscine {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="m-3">
+            <h1>Ajoutez votre piscine</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form action="{% url 'create-pool' %}" method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form pool_form %}
+                {% buttons %}
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+  

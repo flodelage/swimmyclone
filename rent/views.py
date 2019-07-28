@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 from rent.models import Pool
+from rent.forms import CreatePoolForm
 from django.contrib.auth.models import User
 
 
@@ -35,3 +36,24 @@ def pool_detail(request, pool_pk):
     }
 
     return render(request, 'rent/pool_detail.html', context)
+
+
+def create_pool(request):
+    if request.method == 'POST':
+        pool_form = CreatePoolForm(request.POST)
+
+        if pool_form.is_valid():
+            pool = pool_form.save(commit=False)
+            pool.user = current_user
+            pool.save()
+    else:
+        pool_form = CreatePoolForm()
+
+    context = {
+        'pool_form': pool_form,
+    }
+
+    return render(request, 'rent/create_pool.html', context)
+
+
+
