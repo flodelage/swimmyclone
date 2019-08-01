@@ -6,20 +6,21 @@
 
 {% block content %}
 <div class="container">
-    <div class="jumbotron">
+    <div class="jumbotron mt-5">
         {% if registered %}
-            <h1>Thank you for registering!</h1>
+            <h1 class="text-center">Bienvenue {{ user.username }}!</h1>
         {% else %}
-            <h1>Register Here</h1>
-            <h3>Just fill out the form.</h3>
+            <h1>Inscrivez-vous :</h1>
 
             <form enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
                 {{ user_form.as_p }}
                 {{ profile_form.as_p }}
-                <input type="submit" name="" value="Register">
+                <input type="submit" name="" value="Valider">
             </form>
-
+            <p>Vous avez déjà un compte ComeSwim ?
+                <a href="{% url 'login' %}">Connexion</a>
+            </p>
         {% endif %}
     </div>
 </div>

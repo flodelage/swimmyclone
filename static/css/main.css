@@ -63,6 +63,17 @@
     opacity: 0.7;
 }
 
+/* forms */
+.jumbotron {
+    background: white;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+.booking-form {
+    position: sticky;
+    top: 20vh;
+}
+
 /* card(pool) */
 .card-product {
   overflow: hidden;

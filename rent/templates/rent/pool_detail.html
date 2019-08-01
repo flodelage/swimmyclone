@@ -45,15 +45,17 @@
           <p>{{ pool.capacity }} personnes</p>
         </div>
       </div>
-      <div class="col-4">
-        <h1>Louer cette piscine</h1>
-        <form action="{% url 'pool-detail' pool.pk %}" method="post" class="form">
+      <div class="col-4 p-3">
+        <div class="booking-form">
+          <h1>Louer cette piscine</h1>
+          <form action="{% url 'pool-detail' pool.pk %}" method="post" class="form">
             {% csrf_token %}
             {% bootstrap_form booking_form %}
             {% buttons %}
-                <button type="submit" class="btn btn-primary">Valider</button>
+               <button type="submit" class="btn btn-primary">Valider</button>
             {% endbuttons %}
-        </form>
+          </form>
+        </div>
       </div>
 </div>
 {% endblock content %}

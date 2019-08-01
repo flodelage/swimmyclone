@@ -5,18 +5,24 @@
 {% block title %} ComeSwim - Nos piscines {% endblock title %}
 
 {% block content %}
-  <div class="container">
-    <div class="jumbotron">
-      <h1>Login here :</h1>
-<form method="post" action="{% url 'user_login' %}">
-          {% csrf_token %}
-          {# A more "HTML" way of creating the login form#}
-          <label for="username">Username:</label>
-          <input type="text" name="username" placeholder="Username">
-<label for="password">Password:</label>
-          <input type="password" name="password" placeholder="Password">
-<input type="submit" name="" value="Login">
-</form>
+<div class="container">
+    <div class="jumbotron mt-5">
+        <h1>Connectez-vous :</h1>
+
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {# A more "HTML" way of creating the login form#}
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" name="username" placeholder="Nom d'utilisateur">
+            <label for="password">Mot de passe:</label>
+            <input type="password" name="password" placeholder="Mot de passe">
+
+            <input type="submit" name="" value="Connexion">
+
+            <p>Vous n'avez pas de compte ComeSwim ?
+                 <a href="{% url 'register' %}">Inscription</a>
+            </p>
+        </form>
+    </div>
 </div>
-  </div>
 {% endblock content %}
