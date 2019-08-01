@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
 
 {% block title %} ComeSwim - {{ pool.title }} {% endblock title %}
 
@@ -43,8 +45,16 @@
           <p>{{ pool.capacity }} personnes</p>
         </div>
       </div>
-    </div>
-  </div>
+      <div class="col-4">
+        <h1>Louer cette piscine</h1>
+        <form action="{% url 'pool-detail' pool.pk %}" method="post" class="form">
+            {% csrf_token %}
+            {% bootstrap_form booking_form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">Valider</button>
+            {% endbuttons %}
+        </form>
+      </div>
 </div>
 {% endblock content %}
 

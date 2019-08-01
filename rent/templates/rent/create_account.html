@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %} ComeSwim - Création compte {% endblock title %}
+
+{% block content %}
+<div class="container p-5">
+    <h1 class="text-center">Créer un compte</h1>
+    <div class="row">
+        <div class="col-12">
+            <form action="{% url 'account-creation' %}" method="post" class="form">
+                {% csrf_token %}
+                {% bootstrap_form account_form %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">Créer</button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

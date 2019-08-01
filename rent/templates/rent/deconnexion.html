@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %} ComeSwim - Deconnexion {% endblock title %}
+
+{% block content %}
+    <div class="container p-5">
+        <h1 class="text-center">Deconnectez-vous</h1>
+        <div class="row">
+            <div class="col-12">
+                {% if error %}
+                    <p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                    Vous êtes connecté, {{ user.username }} !
+                {% else %}
+                    <form action="{% url 'deconnexion' %}" method="post" class="form">
+                        {% csrf_token %}
+                        {% bootstrap_form connexion_form %}
+                        {% buttons %}
+                            <button type="submit" class="btn btn-primary">Se Deconnecter</button>
+                        {% endbuttons %}
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -59,6 +59,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'comeswim.urls'
+LOGIN_URL = '/pools/user_login/'
 
 TEMPLATES = [
     {
