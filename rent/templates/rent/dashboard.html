@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %} ComeSwim - Nos piscines {% endblock title %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      {% if user_bookings|length == 0 %}
+        <h2>Vous n'avez pas réservé de piscine</h2>
+      {% else %}
+          <h2>Vous avez réservé {{ pool_bookings|length }} piscine{{ pool_bookings|pluralize }} :</h2>
+          {% for booking in user_bookings %}
+              <div class="card-pool-booking-dashboard">
+                <img src={{ booking.pool.image.url }} alt="photo de piscine">
+                <div class="card-product-infos">
+                  <h3>Le {{ booking.date }} - {{ booking.participants }} personnes</h3>
+                  <p>Réservée à {{ booking.pool.user.first_name }} {{ booking.pool.user.last_name }}</p>
+                  <p>mail: {{ booking.pool.user.email }}</p>
+                </div>
+              </div>
+          {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="col-6">
+      {% if pool_bookings|length == 0 %}
+        <h2>Vous n'avez pas de réservation</h2>
+      {% else %}
+          <h2>Vous avez {{ pool_bookings|length }} réservation{{ pool_bookings|pluralize }} :</h2>
+          {% for booking in pool_bookings %}
+              <div class="card-pool-booking-dashboard">
+                <img src="{{ booking.user.profile.image.url }}" alt="photo de profil">
+                <div class="card-product-infos">
+                  <h3>Le {{ booking.date }} - {{ booking.participants }} personnes</h3>
+                  <p>Réservée par {{ booking.user.first_name }} {{ booking.user.last_name }}</p>
+                  <p>mail: {{ booking.user.email }}</p>
+                </div>
+              </div>
+          {% endfor %}
+      {% endif %}
+    </div>
+
+{% endblock content %}

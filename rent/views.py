@@ -8,35 +8,26 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 
+
+# Home page :
+
 def home(request):
     pools = Pool.objects.all()
     sliced_pools = pools[0:3]
 
-    if request.method == 'POST':
-        pool_form = CreatePoolForm(request.POST)
-
-        if pool_form.is_valid():
-            pool = pool_form.save(commit=False)
-            pool.user = current_user
-            pool.save()
-    else:
-        pool_form = CreatePoolForm()
-
     context = {
-        'pools': pools,
-        'sliced_pools': sliced_pools,
-        'pool_form': pool_form,
-    }
+        'pools': pools, 'sliced_pools': sliced_pools}
 
     return render(request, 'rent/home.html', context)
 
 
+
+# Pool CRUD :
+
 def pool_list(request):
     pools = Pool.objects.all()
 
-    context = {
-        'pools': pools,
-    }
+    context = {'pools': pools}
 
     return render(request, 'rent/pool_list.html', context)
 
@@ -45,10 +36,7 @@ def pool_detail(request, pool_pk):
     pool = Pool.objects.get(pk=pool_pk)
     booking_form = CreateBookingForm()
 
-    context = {
-        'pool': pool,
-        'booking_form': booking_form,
-    }
+    context = {'pool': pool,'booking_form': booking_form}
 
     return render(request, 'rent/pool_detail.html', context)
 
@@ -56,20 +44,35 @@ def pool_detail(request, pool_pk):
 @login_required
 def create_pool(request):
     if request.method == 'POST':
-        pool_form = CreatePoolForm(request.POST)
-
+        pool_form = CreatePoolForm(data=request.POST)
         if pool_form.is_valid():
             pool = pool_form.save(commit=False)
             pool.user = request.user
+            if 'image' in request.FILES:
+                print('found it')
+                pool.image = request.FILES['image']
             pool.save()
+        else:
+            print(pool_form.errors)
     else:
         pool_form = CreatePoolForm()
 
-    context = {
-        'pool_form': pool_form,
-    }
+    context = {'pool_form': pool_form,}
 
     return render(request, 'rent/create_pool.html', context)
+
+
+@login_required
+def dashboard(request):
+    user = request.user
+    user_bookings = user.booking_set.all()
+    user_pool = user.pool_set.all()[0]
+    pool_bookings = user_pool.booking_set.all()
+
+
+    context = {'user': user, 'user_bookings': user_bookings, 'user_pool': user_pool, 'pool_bookings': pool_bookings}
+
+    return render(request, 'rent/dashboard.html', context)
 
 
 
@@ -112,7 +115,7 @@ def register(request):
         user_form = UserForm()
         profile_form = ProfileForm()
     return render(request, 'rent/registration.html',
-                  {'user_form': user_form, 'profile_form': profile_form, 'registered': registered}
+                    {'user_form': user_form, 'profile_form': profile_form, 'registered': registered}
                   )
 
 

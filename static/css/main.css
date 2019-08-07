@@ -47,6 +47,10 @@
     font-family: "Fira Sans Extra Condensed", "Open Sans", "Helvetica", "sans-serif"
 }
 
+.navbar-brand:hover {
+    opacity: 0.7;
+}
+
 #pool-create-link:hover {
     opacity: 0.7;
 }
@@ -74,7 +78,7 @@
     top: 20vh;
 }
 
-/* card(pool) */
+/* card pool (list and detail) */
 .card-product {
   overflow: hidden;
   background: white;
@@ -131,6 +135,41 @@
 .booking-swimming-pool-info {
   padding: 16px;
 }
+
+/* card pool (dashboard) */
+.card-pool-booking-dashboard {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-pool-booking-dashboard img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-pool-booking-dashboard h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-pool-booking-dashboard p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-pool-booking-dashboard .card-product-infos {
+  padding: 16px;
+}
+
 
 /************** PAGES **************/
 

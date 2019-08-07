@@ -2,21 +2,18 @@
 {% load static %}
 {% load bootstrap4 %}
 
-{% block title %} ComeSwim - Ajout de piscine {% endblock title %}
+{% block title %} ComeSwim - Nos piscines {% endblock title %}
 
 {% block content %}
-<div class="container p-5">
-    <h1 class="text-center">Ajoutez votre piscine</h1>
-    <div class="row">
-        <div class="col-12">
-            <form action="{% url 'pool-creation' %}" method="post" class="form">
-                {% csrf_token %}
-                {% bootstrap_form pool_form %}
-                {% buttons %}
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
-                {% endbuttons %}
-            </form>
-        </div>
+<div class="container">
+    <div class="jumbotron mt-5">
+        <h1>Ajoutez votre piscine :</h1>
+
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ pool_form.as_p }}
+            <input type="submit" name="" value="Valider">
+        </form>
     </div>
 </div>
 {% endblock content %}
