@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'bootstrap4',
 
     'rent.apps.RentConfig',
+    'map.apps.MapConfig',
 ]
 
 MIDDLEWARE = [

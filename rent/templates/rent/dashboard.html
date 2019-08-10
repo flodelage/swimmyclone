@@ -9,7 +9,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      {% if user_bookings|length == 0 %}
+      {% if not user_bookings %}
         <h2>Vous n'avez pas réservé de piscine</h2>
       {% else %}
           <h2>Vous avez réservé {{ pool_bookings|length }} piscine{{ pool_bookings|pluralize }} :</h2>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="col-6">
-      {% if pool_bookings|length == 0 %}
+      {% if not pool_bookings %}
         <h2>Vous n'avez pas de réservation</h2>
       {% else %}
           <h2>Vous avez {{ pool_bookings|length }} réservation{{ pool_bookings|pluralize }} :</h2>

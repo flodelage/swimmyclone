@@ -7,7 +7,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
+from django.db.models.signals import post_delete
 
+def ma_fonction_de_suppression(sender, instance, **kwargs):
+    post_delete.connect(ma_fonction_de_suppression, sender=Pool)
 
 # Home page :
 
@@ -15,8 +18,7 @@ def home(request):
     pools = Pool.objects.all()
     sliced_pools = pools[0:3]
 
-    context = {
-        'pools': pools, 'sliced_pools': sliced_pools}
+    context = {'pools': pools, 'sliced_pools': sliced_pools,}
 
     return render(request, 'rent/home.html', context)
 
@@ -57,18 +59,22 @@ def create_pool(request):
     else:
         pool_form = CreatePoolForm()
 
-    context = {'pool_form': pool_form,}
+    user = request.user
+    user_pool = user.pool_set.all()[0]
 
-    return render(request, 'rent/create_pool.html', context)
+    context = {'pool_form': pool_form, 'user': user, 'user_pool': user_pool}
 
+    if not user_pool:
+        return render(request, 'rent/create_pool.html', context)
+    else:
+        return HttpResponse("Your account was inactive.")
 
 @login_required
 def dashboard(request):
     user = request.user
-    user_bookings = user.booking_set.all()
-    user_pool = user.pool_set.all()[0]
-    pool_bookings = user_pool.booking_set.all()
-
+    user_bookings = user.booking_set.all()  # liste des réservations de piscines tierces par user connecté
+    user_pool = user.pool_set.all()[0]  # piscine du user connecté
+    pool_bookings = user_pool.booking_set.all()  # liste des réservations concernant la piscine du user connecté
 
     context = {'user': user, 'user_bookings': user_bookings, 'user_pool': user_pool, 'pool_bookings': pool_bookings}
 
