@@ -73,10 +73,14 @@ def create_pool(request):
 def dashboard(request):
     user = request.user
     user_bookings = user.booking_set.all()  # liste des réservations de piscines tierces par user connecté
-    user_pool = user.pool_set.all()[0]  # piscine du user connecté
-    pool_bookings = user_pool.booking_set.all()  # liste des réservations concernant la piscine du user connecté
-
-    context = {'user': user, 'user_bookings': user_bookings, 'user_pool': user_pool, 'pool_bookings': pool_bookings}
+    user_pools = user.pool_set.all()  # piscines du user connecté
+    if not user_pools:
+        context = {'user': user, 'user_bookings': user_bookings, 'user_pools': user_pools,}
+    elif user_pools:
+        user_pool = user.pool_set.all()[0]  # piscine du user connecté
+        pool_bookings = user_pool.booking_set.all()  # liste des réservations concernant la piscine du user connecté
+        context = {'user': user, 'user_bookings': user_bookings, 'user_pools': user_pools,
+                   'user_pool': user_pool, 'pool_bookings': pool_bookings,}
 
     return render(request, 'rent/dashboard.html', context)
 

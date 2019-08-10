@@ -7,41 +7,51 @@
 {% block content %}
 
 <div class="container">
-  <div class="row">
-    <div class="col-6">
-      {% if not user_bookings %}
-        <h2>Vous n'avez pas réservé de piscine</h2>
-      {% else %}
-          <h2>Vous avez réservé {{ pool_bookings|length }} piscine{{ pool_bookings|pluralize }} :</h2>
-          {% for booking in user_bookings %}
-              <div class="card-pool-booking-dashboard">
-                <img src={{ booking.pool.image.url }} alt="photo de piscine">
-                <div class="card-product-infos">
-                  <h3>Le {{ booking.date }} - {{ booking.participants }} personnes</h3>
-                  <p>Réservée à {{ booking.pool.user.first_name }} {{ booking.pool.user.last_name }}</p>
-                  <p>mail: {{ booking.pool.user.email }}</p>
-                </div>
-              </div>
-          {% endfor %}
-      {% endif %}
-    </div>
+    <div class="row">
 
-    <div class="col-6">
-      {% if not pool_bookings %}
-        <h2>Vous n'avez pas de réservation</h2>
-      {% else %}
-          <h2>Vous avez {{ pool_bookings|length }} réservation{{ pool_bookings|pluralize }} :</h2>
-          {% for booking in pool_bookings %}
-              <div class="card-pool-booking-dashboard">
-                <img src="{{ booking.user.profile.image.url }}" alt="photo de profil">
-                <div class="card-product-infos">
-                  <h3>Le {{ booking.date }} - {{ booking.participants }} personnes</h3>
-                  <p>Réservée par {{ booking.user.first_name }} {{ booking.user.last_name }}</p>
-                  <p>mail: {{ booking.user.email }}</p>
-                </div>
-              </div>
-          {% endfor %}
-      {% endif %}
-    </div>
+        <div class="col-6">
+            {% if not user_bookings %}
+                <h2>Vous n'avez pas réservé de piscine</h2>
+            {% else %}
+                <h2>Vous avez réservé {{ pool_bookings|length }} piscine{{ pool_bookings|pluralize }} :</h2>
+                {% for booking in user_bookings %}
+                    <div class="card-pool-booking-dashboard">
+                        <img src={{ booking.pool.image.url }} alt="photo de piscine">
+                        <div class="card-product-infos">
+                            <h3>Le {{ booking.date }} - {{ booking.participants }} personnes</h3>
+                            <p>Réservée à {{ booking.pool.user.first_name }} {{ booking.pool.user.last_name }}</p>
+                            <p>mail: {{ booking.pool.user.email }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
 
+
+        <div class="col-6">
+        {% if not user_pools %}
+            <h2>Vous n'avez pas enregistré de piscine</h2>
+            <p>Si vous êtes propriétaire d'une piscine, mettez la en ligne dès maintenant et gagnez de l'argent !</p>
+            <a href="{% url 'pool-creation' %}"> Proposez votre piscine > </a>
+        {% else %}
+              {% if not pool_bookings %}
+                <h2>Vous n'avez pas de réservation</h2>
+              {% else %}
+                  <h2>Vous avez {{ pool_bookings|length }} réservation{{ pool_bookings|pluralize }} :</h2>
+                  {% for booking in pool_bookings %}
+                      <div class="card-pool-booking-dashboard">
+                        <img src="{{ booking.user.profile.image.url }}" alt="photo de profil">
+                        <div class="card-product-infos">
+                          <h3>Le {{ booking.date }} - {{ booking.participants }} personnes</h3>
+                          <p>Réservée par {{ booking.user.first_name }} {{ booking.user.last_name }}</p>
+                          <p>mail: {{ booking.user.email }}</p>
+                        </div>
+                      </div>
+                  {% endfor %}
+              {% endif %}
+        {% endif %}
+        </div>
+
+    </div>
+</div>
 {% endblock content %}
