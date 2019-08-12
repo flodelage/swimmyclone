@@ -9,7 +9,7 @@
 <div class="searchpage-container">
   <div class="cards-product">
     {% for pool in pools %}
-      <a href="{% url 'pool-detail' pool.pk %}">
+      <a href="{% url 'pool-detail' pool.pk %}" class="card-link">
         <div class="card-product">
           <img src={{ pool.image.url }} alt="photo de piscine">
           <div class="card-product-infos">
@@ -27,4 +27,5 @@
       </a>
     {% endfor %}
   </div>
+</div>
 {% endblock content %}

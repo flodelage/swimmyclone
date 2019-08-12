@@ -5,16 +5,18 @@
 {% block title %} ComeSwim - Accueil {% endblock title %}
 
 {% block content %}
+
 <div class="banner">
 
 </div>
 
-<a href="{% url 'pool-list' %}" class="button btn-primary">Voir nos Piscines</a>
-
-<div class="searchpage-container">
+<div class="container p-5 home-container">
+  <div class="text-center">
+    <a href="{% url 'pool-list' %}" class="btn btn-primary call-to-action-btn">Découvrez nos Piscines</a>
+  </div>
   <div class="cards-product">
     {% for pool in sliced_pools %}
-      <a href="{% url 'pool-detail' pool.pk %}">
+      <a href="{% url 'pool-detail' pool.pk %}" class="card-link">
         <div class="card-product">
           <img src={{ pool.image.url }} alt="photo de piscine">
           <div class="card-product-infos">
@@ -25,7 +27,6 @@
             </div>
             <div class="card-product-title">
               <h2>{{ pool.title|capfirst }}</h2>
-              <span>proposée par {{ pool.user.first_name|capfirst }} {{ pool.user.last_name|capfirst }}</span>
             </div>
           </div>
         </div>
@@ -34,9 +35,4 @@
   </div>
 </div>
 
-
 {% endblock content %}
-
-
-
-pk.eyJ1IjoiZmxvZGVsYWdlIiwiYSI6ImNqejJsY2FmNDA2cjkzaXBsa2gzcDd6OTcifQ.78uremK--2QGNKe5uMF2Hg

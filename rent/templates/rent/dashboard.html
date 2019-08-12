@@ -32,7 +32,7 @@
         {% if not user_pools %}
             <h2>Vous n'avez pas enregistré de piscine</h2>
             <p>Si vous êtes propriétaire d'une piscine, mettez la en ligne dès maintenant et gagnez de l'argent !</p>
-            <a href="{% url 'pool-creation' %}"> Proposez votre piscine > </a>
+            <a href="{% url 'pool-creation' %}" class="pool-create-link"> Proposez votre piscine > </a>
         {% else %}
               {% if not pool_bookings %}
                 <h2>Vous n'avez pas de réservation</h2>

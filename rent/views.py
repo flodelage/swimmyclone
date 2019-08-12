@@ -7,10 +7,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from django.db.models.signals import post_delete
-
-def ma_fonction_de_suppression(sender, instance, **kwargs):
-    post_delete.connect(ma_fonction_de_suppression, sender=Pool)
 
 # Home page :
 
@@ -60,14 +56,15 @@ def create_pool(request):
         pool_form = CreatePoolForm()
 
     user = request.user
-    user_pool = user.pool_set.all()[0]
+    user_pool = user.pool_set.all()
 
     context = {'pool_form': pool_form, 'user': user, 'user_pool': user_pool}
 
     if not user_pool:
         return render(request, 'rent/create_pool.html', context)
     else:
-        return HttpResponse("Your account was inactive.")
+        return HttpResponse("Vous ne pouvez enregistrer qu'une seule piscine")
+
 
 @login_required
 def dashboard(request):

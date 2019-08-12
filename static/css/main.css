@@ -9,6 +9,22 @@
   padding: 0;
 }
 
+/* button call to action */
+.call-to-action-btn {
+    color: white;
+    background-color: #ff5a5f;
+    border-color: #ff5a5f;
+    text-decoration: none;
+}
+
+.call-to-action-btn:hover {
+    opacity: 0.8;
+    color: white;
+    background-color: #ff5a5f;
+    border-color: #ff5a5f;
+    text-decoration: none;
+}
+
 /* footer */
 .footer {
   background: white;
@@ -41,14 +57,14 @@
 
 /* navbar */
 .navbar {
-  justify-content: space-between;
-  background: white !important;
-  box-shadow: 0 0 12px rgba(0,0,0,0.1);
-  z-index: 9999;
+    justify-content: space-between;
+    background: white !important;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    z-index: 9999;
 }
 
 .navbar .navbar-collapse {
-  flex-grow: 0;
+    flex-grow: 0;
 }
 
 .navbar-brand {
@@ -78,23 +94,23 @@
 }
 
 .navbar-brand:hover {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 #pool-create-link:hover {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 #register-link:hover {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 #login-link:hover {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 #logout-link:hover {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 /* forms */
@@ -191,7 +207,7 @@
 .card-pool-booking-dashboard p {
   font-size: 12px;
   line-height: 1.4;
-  opacity: .7;
+  opacity: 0.7;
   margin-bottom: 0;
   margin-top: 8px;
 }
@@ -203,13 +219,31 @@
 
 /************** PAGES **************/
 
+/* home */
+.home-container {
+  background-color: white;
+}
+
+.cards-product {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  width: 100%;
+  padding: 24px;
+}
+
+.home-container .card-link {
+  text-decoration: none;
+  color: #2B2A2A;
+}
+
 /* pool_list */
 .searchpage-container {
   display: flex;
   background-color: white;
 }
 
-.cards-product {
+.searchpage-container .cards-product {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
@@ -217,14 +251,12 @@
   padding: 24px;
 }
 
-.searchpage-container a {
-  color: black;
+.searchpage-container .card-link {
   text-decoration: none;
   color: #2B2A2A;
 }
 
 /* pool_detail */
-
 .page-booking  {
   background-color: white;
 }
